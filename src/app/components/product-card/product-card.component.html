@@ -3,7 +3,7 @@
     <div class="product-img pointer">
       <img
         [src]="product?.image"
-        loading="auto"
+        loading="lazy"
         class="img"
         width="80"
         [alt]="product?.name"
@@ -19,7 +19,7 @@
       </p>
 
       <p class="price-text mb-0 mt-2 d-inline-block d-md-none">
-        <strong>{{ product?.price }}€ </strong>
+        <strong>{{ product!.price | currency }} </strong>
       </p>
     </div>
   </div>
