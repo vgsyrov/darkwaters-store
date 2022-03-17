@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { MatToolbarModule } from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-header',
@@ -16,4 +15,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onGamburgerClicked() {
+    console.log('gamburger');
+  }
+
+  onCartClicked() {
+    console.log('cart');
+  }
 }

@@ -10,4 +10,6 @@ import {environment} from "../environments/environment";
 export class AppComponent {
   title = environment.applicationName;
   public product: IProduct = oneProduct;
+
+
 }

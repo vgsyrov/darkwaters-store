@@ -1,14 +1,9 @@
-<p>
-  <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>{{applicationName}}</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>assets/icons/icon-basket.svg</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <p-button icon="pi pi-bars" (click)="onGamburgerClicked()"></p-button>
+  </div>
 
-
+  <div class="p-toolbar-group-right">
+    <p-button icon="pi pi-shopping-cart" (click)="onCartClicked()"></p-button>
+  </div>
+</p-toolbar>
