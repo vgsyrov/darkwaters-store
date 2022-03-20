@@ -23,6 +23,7 @@ import { ProductCardFullComponent } from './components/product-card-full/product
 import { DataViewComponent } from './components/data-view/data-view.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { CarouselDirective } from './directives/carousel.directive';
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 @NgModule({
   declarations: [
@@ -35,25 +36,26 @@ import { CarouselDirective } from './directives/carousel.directive';
     SideMenuComponent,
     CarouselDirective
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ToolbarModule,
-    ButtonModule,
-    DataViewModule,
-    RatingModule,
-    HttpClientModule,
-    PanelModule,
-    DialogModule,
-    DropdownModule,
-    InputTextModule,
-    RippleModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ToolbarModule,
+        ButtonModule,
+        DataViewModule,
+        RatingModule,
+        HttpClientModule,
+        PanelModule,
+        DialogModule,
+        DropdownModule,
+        InputTextModule,
+        RippleModule,
 
-    RatingModule,
-    FormsModule,
-    TieredMenuModule
-  ],
+        RatingModule,
+        FormsModule,
+        TieredMenuModule,
+        ProgressSpinnerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

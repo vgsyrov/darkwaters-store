@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { environment } from '../../../environments/environment';
+import {IUser} from "../../models/user.model";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,21 @@ import { environment } from '../../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input()
+  public user$ = new Observable<IUser>();
+
+  @Input()
+  public currencies!: string [];
+
+  public user = {} as IUser;
+
   public applicationName: string = environment.applicationName;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.user$.subscribe(value => this.user = value);
+    console.log(`otladka --> currencies.length = ${this.currencies.length}`);
   }
 
   onGamburgerClicked() {
@@ -22,4 +34,5 @@ export class HeaderComponent implements OnInit {
   onCartClicked() {
     console.log('cart');
   }
+
 }

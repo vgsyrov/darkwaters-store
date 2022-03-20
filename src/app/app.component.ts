@@ -3,6 +3,8 @@ import {environment} from "../environments/environment";
 import { ProductService } from "./services/product.service";
 import { Product } from "./models/product-info.model";
 import { MenuItem } from "primeng/api";
+import { mapTo, Observable, timer} from "rxjs";
+import {IUser} from "./models/user.model";
 
 @Component({
   selector: 'app-root',
@@ -13,11 +15,10 @@ export class AppComponent  implements OnInit{
   title = environment.applicationName;
   public products: Product[] = [];
   public categories: MenuItem[] = [];
+  public currencies: string[] = ['RUR', 'USD', 'EUR', 'CAP']
 
-  // @ViewChild('dataView') dataView: DataViewComponent;
-
-  constructor(private productService: ProductService) {
-  }
+  constructor(private productService: ProductService)
+  { }
 
   ngOnInit(): void {
     this.productService.getProducts().then(data => this.products = data);
@@ -31,5 +32,32 @@ export class AppComponent  implements OnInit{
   onMenuClicked(s: any) {
     console.log(s);
   }
+
+  public getUser$(): Observable<IUser> {
+    return timer(1000).pipe(
+      mapTo( {
+        name: 'Chosen One',
+        role: 'Guest',
+        shopSum:
+          {
+            value: 1000,
+            defaultCurrency: 'RUR',
+          },
+      }),
+    );
+  }
+
+  public getUser(): IUser {
+    return  {
+        name: 'Chosen One 2',
+        role: 'Guest',
+        shopSum:
+          {
+            value: 1000,
+            defaultCurrency: 'RUR',
+          },
+      };
+  }
+
 
 }
