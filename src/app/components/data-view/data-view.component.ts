@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
 import { SelectItem } from "primeng/api";
-import { ProductService } from "../../services/product.service"
-import {Product} from "../../models/product-info.model";
+
+import { Product } from "../../models/product-info.model";
+
 
 @Component({
   selector: 'app-data-view',
@@ -10,6 +11,7 @@ import {Product} from "../../models/product-info.model";
 })
 export class DataViewComponent implements OnInit {
 
+  @Input()
   products!: Product[];
 
   sortOptions!: SelectItem[];
@@ -20,11 +22,11 @@ export class DataViewComponent implements OnInit {
 
   sortKey: string = '';
 
-  constructor(private productService: ProductService) { }
+  constructor() { }
+
+
 
   ngOnInit() {
-    this.productService.getProducts().then(data => this.products = data);
-
     this.sortOptions = [
       {label: 'Сначала дорогие', value: '!price'},
       {label: 'Сначала дешевые', value: 'price'}
@@ -43,9 +45,4 @@ export class DataViewComponent implements OnInit {
       this.sortField = value;
     }
   }
-
-  onInputEvent(event: any) {
-    console.log(event);
-  }
-
 }

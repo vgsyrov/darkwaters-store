@@ -1,3 +1,5 @@
 <app-header></app-header>
-<!--<app-product-card  [product]="product" ></app-product-card>-->
-<app-data-view></app-data-view>
+<div class="grid">
+  <div class="col-fixed" style="width:20%"><app-side-menu [items]="categories"></app-side-menu></div>
+  <div class="col"><app-data-view #dataView [products]="products"></app-data-view></div>
+</div>

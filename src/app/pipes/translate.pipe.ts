@@ -5,14 +5,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TranslatePipe implements PipeTransform {
 
-  transform(value: string): string {
-    switch (value) {
-      case 'OUTOFSTOCK': return 'Отсутствует';
-      case 'INSTOCK': return 'Доступен';
-      case 'LOWSTOCK': return 'Остатки';
-    }
-    console.log(value);
-    return value;
-  }
+  private translate = new Map<string, string> ([
+    ['OUTOFSTOCK', 'Отсутствует'],
+    ['INSTOCK', 'Доступен'],
+    ['LOWSTOCK', 'Остатки']
+  ]);
 
+  transform(value: string): string {
+    if (this.translate.has(value)) {
+      return <string>this.translate.get(value);
+    } else {
+      return value;
+    }
+  }
 }
