@@ -10,6 +10,7 @@ export class ProductCardFullComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('otladka ---> ProductCardFullComponent');
   }
 
 }

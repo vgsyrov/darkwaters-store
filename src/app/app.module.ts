@@ -24,6 +24,9 @@ import { DataViewComponent } from './components/data-view/data-view.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { CarouselDirective } from './directives/carousel.directive';
 import {ProgressSpinnerModule} from "primeng/progressspinner";
+import {RouterModule} from "@angular/router";
+import { ListPageComponent } from './pages/list-page/list-page/list-page.component';
+import {ProductService} from "./services/product.service";
 
 @NgModule({
   declarations: [
@@ -34,10 +37,12 @@ import {ProgressSpinnerModule} from "primeng/progressspinner";
     DataViewComponent,
     TranslatePipe,
     SideMenuComponent,
-    CarouselDirective
+    CarouselDirective,
+    ListPageComponent
   ],
     imports: [
         BrowserModule,
+        RouterModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         ToolbarModule,
@@ -56,7 +61,7 @@ import {ProgressSpinnerModule} from "primeng/progressspinner";
         TieredMenuModule,
         ProgressSpinnerModule
     ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

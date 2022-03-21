@@ -12,7 +12,7 @@
     </ng-template>
     <ng-template let-product pTemplate="listItem">
       <div class="col-12">
-        <div class="product-list-item">
+        <div class="product-list-item" (click)="onProductDetails($event, product.id)">
           <img [src]="'assets/data/images/product/' + product.image" [alt]="product.name"/>
           <div class="product-list-detail">
             <div class="product-name">{{product.name}}</div>

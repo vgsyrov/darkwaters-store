@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   @Input()
   public currencies!: string [];
 
-  public user = {} as IUser;
+  public user: IUser | null = null;
 
   public applicationName: string = environment.applicationName;
 
@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$.subscribe(value => this.user = value);
-    console.log(`otladka --> currencies.length = ${this.currencies.length}`);
   }
 
   onGamburgerClicked() {

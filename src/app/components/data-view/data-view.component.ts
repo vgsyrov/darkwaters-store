@@ -1,5 +1,7 @@
 import {Component, Input, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SelectItem } from "primeng/api";
+import { RouterModule } from '@angular/router';
 
 import { Product } from "../../models/product-info.model";
 
@@ -22,7 +24,8 @@ export class DataViewComponent implements OnInit {
 
   sortKey: string = '';
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router) { }
 
 
 
@@ -44,5 +47,19 @@ export class DataViewComponent implements OnInit {
       this.sortOrder = 1;
       this.sortField = value;
     }
+  }
+
+
+  onProductDetails(event: MouseEvent, id: string) {
+    if ((event.target as HTMLElement).innerText === 'В корзину') {
+      console.log(`otladka ---> add to cart ${id}`);
+      console.log(event.target);
+    } else {
+      this.router.navigate([`product-card-full`, id]);
+    }
+  }
+
+  onAddToCart(id: string) {
+
   }
 }
