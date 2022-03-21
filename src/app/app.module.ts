@@ -27,6 +27,8 @@ import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {RouterModule} from "@angular/router";
 import { ListPageComponent } from './pages/list-page/list-page/list-page.component';
 import {ProductService} from "./services/product.service";
+import {CarouselModule} from "primeng/carousel";
+import {TabViewModule} from "primeng/tabview";
 
 @NgModule({
   declarations: [
@@ -40,27 +42,29 @@ import {ProductService} from "./services/product.service";
     CarouselDirective,
     ListPageComponent
   ],
-    imports: [
-        BrowserModule,
-        RouterModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        ToolbarModule,
-        ButtonModule,
-        DataViewModule,
-        RatingModule,
-        HttpClientModule,
-        PanelModule,
-        DialogModule,
-        DropdownModule,
-        InputTextModule,
-        RippleModule,
+  imports: [
+    BrowserModule,
+    RouterModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToolbarModule,
+    ButtonModule,
+    DataViewModule,
+    RatingModule,
+    HttpClientModule,
+    PanelModule,
+    DialogModule,
+    DropdownModule,
+    InputTextModule,
+    RippleModule,
 
-        RatingModule,
-        FormsModule,
-        TieredMenuModule,
-        ProgressSpinnerModule
-    ],
+    RatingModule,
+    FormsModule,
+    TieredMenuModule,
+    ProgressSpinnerModule,
+    CarouselModule,
+    TabViewModule
+  ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })

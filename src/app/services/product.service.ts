@@ -28,4 +28,13 @@ export class ProductService {
       );
   }
 
+  getProduct(id: string) {
+    return this.http.get<any>('assets/data/products_full.json')
+      .toPromise()
+      .then(res => <Product[]>res.data)
+      .then(data => { return data; })
+      .then(filter => {return filter.filter(item => item.id === id)[0]})
+      ;
+  }
+
 }

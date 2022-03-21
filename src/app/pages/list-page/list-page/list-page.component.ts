@@ -16,7 +16,7 @@ export class ListPageComponent implements OnInit {
   title = environment.applicationName;
   public products: Product[] = [];
   public categories: MenuItem[] = [];
-  public currencies: string[] = ['RUR', 'USD', 'EUR', 'CAP']
+
 
   constructor(private productService: ProductService) { }
 
@@ -26,20 +26,6 @@ export class ListPageComponent implements OnInit {
       this.categories = categories.map((c: string) => {return {label: c, command: () => { this.onMenuClicked(c); }}});
       console.log(this.categories);
     });
-  }
-
-  public getUser$(): Observable<IUser> {
-    return timer(2000).pipe(
-      mapTo( {
-        name: 'Chosen One',
-        role: 'Guest',
-        shopSum:
-          {
-            value: 1000,
-            defaultCurrency: 'RUR',
-          },
-      }),
-    );
   }
 
   onMenuClicked(s: any) {
