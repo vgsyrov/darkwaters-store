@@ -1,5 +1,5 @@
 import {Component, OnInit } from '@angular/core';
-import {mapTo, Observable, timer} from "rxjs";
+import {map, Observable, timer} from "rxjs";
 import {IUser} from "./models/user.model";
 
 @Component({
@@ -20,7 +20,7 @@ export class AppComponent  implements OnInit{
 
   public getUser$(): Observable<IUser> {
     return timer(2000).pipe(
-      mapTo( {
+      map( (a: number) => { return {
         name: 'Chosen One',
         role: 'Guest',
         shopSum:
@@ -28,7 +28,7 @@ export class AppComponent  implements OnInit{
             value: 1000,
             defaultCurrency: 'RUR',
           },
-      }),
+      }}),
     );
   }
 

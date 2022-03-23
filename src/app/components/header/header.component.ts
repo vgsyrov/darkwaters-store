@@ -1,21 +1,21 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { environment } from '../../../environments/environment';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {environment} from '../../../environments/environment';
 import {IUser} from "../../models/user.model";
-import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  styleUrls: ['./header.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
 
-  @Input()
-  public user$ = new Observable<IUser>();
+  // public user$ = new Observable<IUser>();
 
   @Input()
   public currencies!: string [];
 
+  @Input()
   public user: IUser | null = null;
 
   public applicationName: string = environment.applicationName;
@@ -23,11 +23,11 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.user$.subscribe(value => this.user = value);
+    //this.user$.subscribe(value => this.user = value);
   }
 
-  onGamburgerClicked() {
-    console.log('gamburger');
+  onHamburgerClicked() {
+    console.log('hamburger');
   }
 
   onCartClicked() {
