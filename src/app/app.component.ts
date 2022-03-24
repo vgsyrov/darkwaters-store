@@ -10,12 +10,13 @@ import {IUser} from "./models/user.model";
 export class AppComponent  implements OnInit{
 
   public currencies: string[] = ['RUR', 'USD', 'EUR', 'CAP']
+  public user$!: Observable<IUser>;
 
   constructor()
   { }
 
   ngOnInit(): void {
-
+    this.user$ = this.getUser$();
   }
 
   public getUser$(): Observable<IUser> {
