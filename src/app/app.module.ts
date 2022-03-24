@@ -5,7 +5,7 @@ import {ToolbarModule} from "primeng/toolbar";
 import {ButtonModule} from "primeng/button";
 import {DataViewModule} from "primeng/dataview";
 import {RatingModule} from "primeng/rating";
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {PanelModule} from 'primeng/panel';
 import {DropdownModule} from 'primeng/dropdown';
@@ -29,6 +29,7 @@ import { ListPageComponent } from './pages/list-page/list-page/list-page.compone
 import {ProductService} from "./services/product.service";
 import {CarouselModule} from "primeng/carousel";
 import {TabViewModule} from "primeng/tabview";
+import {UrlBaseInterceptor} from "./services/url-base.interceptor";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,14 @@ import {TabViewModule} from "primeng/tabview";
     CarouselModule,
     TabViewModule
   ],
-  providers: [ProductService],
+  providers: [
+    ProductService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UrlBaseInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

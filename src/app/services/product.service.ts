@@ -11,14 +11,14 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts() {
-    return this.http.get<any>('assets/data/products_full.json')
+    return this.http.get<any>('/products')
       .toPromise()
-      .then(res => <Product[]>res.data)
+      .then(res => <Product[]>res.data )
       .then(data => { return data; });
   }
 
   getCategories(): Observable<any> {
-    return this.http.get<any>('assets/data/products_full.json')
+    return this.http.get<any>('/products')
       .pipe(
         map( res=> <Product[]>res.data),
         map( data => <Product[]>data.map( item => item.category)),
@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   getProduct(id: string) {
-    return this.http.get<any>('assets/data/products_full.json')
+    return this.http.get<any>('/products')
       .toPromise()
       .then(res => <Product[]>res.data)
       .then(data => { return data; })
