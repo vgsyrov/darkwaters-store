@@ -6,8 +6,9 @@ export const environment = {
   production: false,
   applicationName: "Darkwater's general store",
   config: {
-    host: "http://localhost:34000",
-    baseHref: ""
+    host: 'http://localhost:34000',
+    baseHref: '',
+    supportedCurrencies: ['RUR', 'USD', 'EUR', 'CAP'],
   },
 };
 

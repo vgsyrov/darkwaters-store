@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ToolbarModule} from "primeng/toolbar";
-import {ButtonModule} from "primeng/button";
-import {DataViewModule} from "primeng/dataview";
-import {RatingModule} from "primeng/rating";
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import {PanelModule} from 'primeng/panel';
-import {DropdownModule} from 'primeng/dropdown';
-import {DialogModule} from 'primeng/dialog';
-import {InputTextModule} from 'primeng/inputtext';
-import {RippleModule} from 'primeng/ripple';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { DataViewModule } from 'primeng/dataview';
+import { RatingModule } from 'primeng/rating';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { PanelModule } from 'primeng/panel';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { RippleModule } from 'primeng/ripple';
 import { TranslatePipe } from './pipes/translate.pipe';
-import {TieredMenuModule} from "primeng/tieredmenu";
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,13 +23,13 @@ import { ProductCardFullComponent } from './components/product-card-full/product
 import { DataViewComponent } from './components/data-view/data-view.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { CarouselDirective } from './directives/carousel.directive';
-import {ProgressSpinnerModule} from "primeng/progressspinner";
-import {RouterModule} from "@angular/router";
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { RouterModule } from '@angular/router';
 import { ListPageComponent } from './pages/list-page/list-page/list-page.component';
-import {ProductService} from "./services/product.service";
-import {CarouselModule} from "primeng/carousel";
-import {TabViewModule} from "primeng/tabview";
-import {UrlBaseInterceptor} from "./services/url-base.interceptor";
+import { ProductService } from './services/product.service';
+import { CarouselModule } from 'primeng/carousel';
+import { TabViewModule } from 'primeng/tabview';
+import { UrlBaseInterceptor } from './services/url-base.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import {UrlBaseInterceptor} from "./services/url-base.interceptor";
     TranslatePipe,
     SideMenuComponent,
     CarouselDirective,
-    ListPageComponent
+    ListPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,16 +64,15 @@ import {UrlBaseInterceptor} from "./services/url-base.interceptor";
     TieredMenuModule,
     ProgressSpinnerModule,
     CarouselModule,
-    TabViewModule
+    TabViewModule,
   ],
   providers: [
-    ProductService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UrlBaseInterceptor,
       multi: true,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

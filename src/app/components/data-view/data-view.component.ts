@@ -1,20 +1,23 @@
-import {Component, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { SelectItem } from "primeng/api";
-import { RouterModule } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SelectItem } from 'primeng/api';
 
-import { Product } from "../../models/product-info.model";
-
+import { IProduct } from '../../models/product-info.model';
 
 @Component({
   selector: 'app-data-view',
   templateUrl: './data-view.component.html',
-  styleUrls: ['./data-view.component.scss']
+  styleUrls: ['./data-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DataViewComponent implements OnInit {
-
   @Input()
-  products!: Product[];
+  products!: IProduct[];
 
   sortOptions!: SelectItem[];
 
@@ -24,15 +27,12 @@ export class DataViewComponent implements OnInit {
 
   sortKey: string = '';
 
-  constructor(private route: ActivatedRoute,
-              private router: Router) { }
-
-
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.sortOptions = [
-      {label: 'Сначала дорогие', value: '!price'},
-      {label: 'Сначала дешевые', value: 'price'}
+      { label: 'Сначала дорогие', value: '!price' },
+      { label: 'Сначала дешевые', value: 'price' },
     ];
   }
 
@@ -42,24 +42,22 @@ export class DataViewComponent implements OnInit {
     if (value.indexOf('!') === 0) {
       this.sortOrder = -1;
       this.sortField = value.substring(1, value.length);
-    }
-    else {
+    } else {
       this.sortOrder = 1;
       this.sortField = value;
     }
   }
 
-
   onProductDetails(event: MouseEvent, id: string) {
     if ((event.target as HTMLElement).innerText === 'В корзину') {
-      console.log(`otladka ---> add to cart ${id}`);
-      console.log(event.target);
     } else {
       this.router.navigate([`product-card-full`, id]);
     }
   }
 
-  onAddToCart(id: string) {
-
+  onAddToCart(event: any, id: string) {
+    event.stopPropagation();
+    console.log(`otladka ---> add to cart ${id}`);
+    console.log(event.target);
   }
 }

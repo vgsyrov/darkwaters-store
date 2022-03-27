@@ -1,5 +1,19 @@
-import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { BehaviorSubject, filter, map, Subject, takeUntil, withLatestFrom } from 'rxjs';
+import {
+  Directive,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
+import {
+  BehaviorSubject,
+  filter,
+  map,
+  Subject,
+  takeUntil,
+  withLatestFrom,
+} from 'rxjs';
 
 interface ICourselContext<T> {
   $implicit: T;
@@ -29,7 +43,7 @@ export class CarouselDirective<T> implements OnInit, OnDestroy {
 
   constructor(
     private templateRef: TemplateRef<ICourselContext<T>>,
-    private viewContainerRef: ViewContainerRef,
+    private viewContainerRef: ViewContainerRef
   ) {}
 
   ngOnInit() {
@@ -46,7 +60,7 @@ export class CarouselDirective<T> implements OnInit, OnDestroy {
       .pipe(
         withLatestFrom(this.items$.pipe(filter(Boolean))),
         map(([index, items]) => this.getCurrentContext(index, items)),
-        takeUntil(this.destroy$),
+        takeUntil(this.destroy$)
       )
       .subscribe((context) => {
         this.viewContainerRef.clear();

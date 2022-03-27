@@ -1,30 +1,21 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {environment} from '../../../environments/environment';
-import {IUser} from "../../models/user.model";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { IUser } from '../../models/user.model';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit {
-
-  // public user$ = new Observable<IUser>();
-
+export class HeaderComponent {
   @Input()
-  public currencies!: string [];
+  public currencies!: string[];
 
   @Input()
   public user: IUser | null = null;
 
-  public applicationName: string = environment.applicationName;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    //this.user$.subscribe(value => this.user = value);
-  }
+  public readonly applicationName: string = environment.applicationName;
 
   onHamburgerClicked() {
     console.log('hamburger');
@@ -33,5 +24,4 @@ export class HeaderComponent implements OnInit {
   onCartClicked() {
     console.log('cart');
   }
-
 }

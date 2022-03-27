@@ -1,12 +1,12 @@
 <p-toolbar>
   <div class="p-toolbar-group-left">
-    <p-button icon="pi pi-bars" (click)="onHamburgerClicked()"></p-button>
+    <p-button icon="pi pi-bars" (click)="onHamburgerClicked()"> </p-button>
   </div>
   <div class="p-toolbar-group-right">
     <div class="total-sum">
-      <ng-container  *ngIf="user ; else spinner">
+      <ng-container *ngIf="user; else spinner">
         <div class="user-info">
-          {{user.name}}
+          {{ user.name }}
         </div>
         <div
           *appCarousel="let currency of currencies; next as next; back as back"
@@ -17,12 +17,13 @@
         </div>
       </ng-container>
     </div>
-    <p-button icon="pi pi-shopping-cart" (click)="onCartClicked()"></p-button>
+    <p-button icon="pi pi-shopping-cart" (click)="onCartClicked()"> </p-button>
   </div>
 </p-toolbar>
 
 <ng-template #spinner>
-  <div class="progress-spinner">
-    <p-progressSpinner [style]="{width: '30px', height: '30px'}"></p-progressSpinner>
+  <div>
+    <p-progressSpinner [style]="{ width: '30px', height: '30px' }">
+    </p-progressSpinner>
   </div>
 </ng-template>

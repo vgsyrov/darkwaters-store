@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductCardFullComponent } from "./components/product-card-full/product-card-full.component";
-import {ListPageComponent} from "./pages/list-page/list-page/list-page.component";
+import { ProductCardFullComponent } from './components/product-card-full/product-card-full.component';
+import { ListPageComponent } from './pages/list-page/list-page/list-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list-page', pathMatch: 'full' },
@@ -14,13 +14,12 @@ const routes: Routes = [
         path: '',
         component: ProductCardFullComponent,
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,
-    { enableTracing: true })],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
