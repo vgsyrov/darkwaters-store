@@ -1,29 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { IProduct } from '../../../models/product-info.model';
 import { MenuItem } from 'primeng/api';
 import { ProductService } from '../../../services/product.service';
-import { mapTo, Observable, timer } from 'rxjs';
-import { IUser } from '../../../models/user.model';
 
 @Component({
-  selector: 'app-list-page',
-  templateUrl: './list-page.component.html',
-  styleUrls: ['./list-page.component.sass'],
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListPageComponent implements OnInit {
+export class ProductListComponent implements OnInit {
   title = environment.applicationName;
   public products: IProduct[] = [];
   public categories: MenuItem[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.productService
-      .getProducts()
-      .subscribe((data) => (this.products = data));
+    this.productService.getProducts().subscribe((data) => {
+      this.changeDetectorRef.markForCheck();
+      this.products = data;
+    });
     this.productService.getCategories().subscribe((categories) => {
       this.categories = categories.map((c: string) => {
+        this.changeDetectorRef.markForCheck();
         return {
           label: c,
           command: () => {

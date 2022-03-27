@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductCardFullComponent } from './components/product-card-full/product-card-full.component';
-import { ListPageComponent } from './pages/list-page/list-page/list-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/list-page', pathMatch: 'full' },
-  { path: 'list-page', component: ListPageComponent },
   {
-    path: 'product-card-full/:id',
-    data: { label: 'Полное описание товара' },
-    children: [
-      {
-        path: '',
-        component: ProductCardFullComponent,
-      },
-    ],
+    path: '',
+    loadChildren: () =>
+      import('./pages/product-list/product-list.module').then(
+        (m) => m.ProductListModule
+      ),
+  },
+  {
+    path: 'product-card-full',
+    loadChildren: () =>
+      import('./pages/product/product.module').then((m) => m.ProductModule),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

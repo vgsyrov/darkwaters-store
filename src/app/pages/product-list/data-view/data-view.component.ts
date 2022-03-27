@@ -7,7 +7,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 
-import { IProduct } from '../../models/product-info.model';
+import { IProduct } from '../../../models/product-info.model';
 
 @Component({
   selector: 'app-data-view',
