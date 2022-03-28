@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { map, Observable, timer } from 'rxjs';
 import { IUser } from './models/user.model';
 import { environment } from '../environments/environment';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,14 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent implements OnInit {
+  private readonly title = environment.applicationName;
   public readonly currencies: string[] = environment.config.supportedCurrencies;
   public user$!: Observable<IUser>;
+
+  constructor(private titleService:Title) {
+    const startMode = !environment.production? ' DEV' : '';
+    this.titleService.setTitle(this.title + startMode);
+  }
 
   ngOnInit(): void {
     this.user$ = this.getUser$();
@@ -18,8 +25,8 @@ export class AppComponent implements OnInit {
 
   public getUser$(): Observable<IUser> {
     return timer(2000).pipe(
-      map((a: number) => ({
-        name: 'Chosen One',
+      map(() => ({
+        name: 'Chosen One' + environment.production,
         role: 'Guest',
         shopSum: {
           value: 1000,

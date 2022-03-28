@@ -4,7 +4,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
 } from '@angular/core';
-import { environment } from '../../../../environments/environment';
 import { IProduct } from '../../../models/product-info.model';
 import { MenuItem } from 'primeng/api';
 import { ProductService } from '../../../services/product.service';
@@ -16,14 +15,13 @@ import { ProductService } from '../../../services/product.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent implements OnInit {
-  title = environment.applicationName;
   public products: IProduct[] = [];
   public categories: MenuItem[] = [];
 
   constructor(
     private productService: ProductService,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+    private changeDetectorRef: ChangeDetectorRef,
+  ) {  }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data) => {

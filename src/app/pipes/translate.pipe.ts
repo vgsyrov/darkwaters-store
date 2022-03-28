@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 const translate = new Map<string, string>([
   ['OUTOFSTOCK', 'Отсутствует'],
-  ['INSTOCK', 'Доступен'],
+  ['INSTOCK', ''],
   ['LOWSTOCK', 'Остатки'],
 ]);
 
