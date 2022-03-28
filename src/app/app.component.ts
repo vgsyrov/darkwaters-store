@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { map, Observable, timer } from 'rxjs';
 import { IUser } from './models/user.model';
 import { environment } from '../environments/environment';
-import {Title} from "@angular/platform-browser";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   public readonly currencies: string[] = environment.config.supportedCurrencies;
   public user$!: Observable<IUser>;
 
-  constructor(private titleService:Title) {
-    const startMode = !environment.production? ' DEV' : '';
+  constructor(private titleService: Title) {
+    const startMode = !environment.production ? ' DEV' : '';
     this.titleService.setTitle(this.title + startMode);
   }
 

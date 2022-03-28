@@ -20,8 +20,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private changeDetectorRef: ChangeDetectorRef,
-  ) {  }
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data) => {
