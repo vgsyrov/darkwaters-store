@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { IUser } from '../../models/user.model';
 
@@ -15,6 +21,9 @@ export class HeaderComponent {
   @Input()
   public user: IUser | null = null;
 
+  @Output()
+  basketClicked = new EventEmitter<void>();
+
   public readonly applicationName: string = environment.applicationName;
 
   onHamburgerClicked() {
@@ -22,6 +31,6 @@ export class HeaderComponent {
   }
 
   onCartClicked() {
-    console.log('cart');
+    this.basketClicked.emit();
   }
 }

@@ -40,6 +40,7 @@
             icon="pi pi-shopping-cart"
             label="В корзину"
             [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
+            (click)="onAddToBasket()"
           >
           </p-button>
         </div>

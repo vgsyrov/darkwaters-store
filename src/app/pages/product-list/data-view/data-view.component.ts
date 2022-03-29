@@ -3,11 +3,13 @@ import {
   Component,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 
 import { IProduct } from '../../../models/product-info.model';
+import { BasketService } from '../../../services/basket.service';
 
 @Component({
   selector: 'app-data-view',
@@ -19,6 +21,7 @@ export class DataViewComponent implements OnInit {
   @Input()
   products!: IProduct[];
 
+  @Output()
   sortOptions!: SelectItem[];
 
   sortOrder: number = -1;
@@ -27,7 +30,11 @@ export class DataViewComponent implements OnInit {
 
   sortKey: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private basketService: BasketService
+  ) {}
 
   ngOnInit() {
     this.sortOptions = [
@@ -59,5 +66,8 @@ export class DataViewComponent implements OnInit {
     event.stopPropagation();
     console.log(`otladka ---> add to cart ${id}`);
     console.log(event.target);
+    this.basketService.addProductToBasket(
+      this.products.find((product) => product.id === id)!
+    );
   }
 }

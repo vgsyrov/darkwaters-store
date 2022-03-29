@@ -3,6 +3,7 @@ import { map, Observable, timer } from 'rxjs';
 import { IUser } from './models/user.model';
 import { environment } from '../environments/environment';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   public readonly currencies: string[] = environment.config.supportedCurrencies;
   public user$!: Observable<IUser>;
 
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title, private router: Router) {
     const startMode = !environment.production ? ' DEV' : '';
     this.titleService.setTitle(this.title + startMode);
   }
@@ -34,5 +35,9 @@ export class AppComponent implements OnInit {
         },
       }))
     );
+  }
+
+  onBasketClicked() {
+    this.router.navigate([`basket`]);
   }
 }
