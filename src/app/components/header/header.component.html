@@ -12,7 +12,10 @@
           *appCarousel="let currency of currencies; next as next; back as back"
         >
           <i class="pi pi-angle-left" (click)="back()"></i>
-          {{ user.shopSum.value | currencyConv: currency : user.shopSum.defaultCurrency}}
+          {{
+            user.shopSum.value
+              | currencyConv: currency:user.shopSum.defaultCurrency
+          }}
           <i class="pi pi-angle-right" (click)="next()"></i>
         </div>
       </ng-container>

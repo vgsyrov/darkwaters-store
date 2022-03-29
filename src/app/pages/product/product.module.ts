@@ -9,7 +9,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { CarouselDirective } from '../../directives/carousel.directive';
-import {SharedModule} from "../../shared/shared/shared.module";
+import { SharedModule } from '../../shared/shared/shared.module';
 
 @NgModule({
   declarations: [ProductComponent, ProductCardFullComponent, CarouselDirective],
@@ -21,7 +21,7 @@ import {SharedModule} from "../../shared/shared/shared.module";
     CarouselModule,
     ButtonModule,
     TabViewModule,
-    SharedModule
+    SharedModule,
   ],
 })
 export class ProductModule {}

@@ -19,11 +19,18 @@ export class CurrencyPipe implements PipeTransform {
     );
   }
 
-  private static calculateSum(value: number, currencyFrom: string, currencyTo: string): number {
-    return value * CurrencyPipe.getCurs(currencyFrom) / CurrencyPipe.getCurs(currencyTo);
+  private static calculateSum(
+    value: number,
+    currencyFrom: string,
+    currencyTo: string
+  ): number {
+    return (
+      (value * CurrencyPipe.getCurs(currencyFrom)) /
+      CurrencyPipe.getCurs(currencyTo)
+    );
   }
 
-  private static getCurs( currency: string): number {
+  private static getCurs(currency: string): number {
     switch (currency) {
       case 'USD':
         return 70;

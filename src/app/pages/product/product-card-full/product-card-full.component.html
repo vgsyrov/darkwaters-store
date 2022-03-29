@@ -23,10 +23,16 @@
         <div class="col">Характеристики</div>
         <div class="col">
           <div
-            *appCarousel="let currency of currencies; next as next; back as back"
+            *appCarousel="
+              let currency of currencies;
+              next as next;
+              back as back
+            "
           >
             <i class="pi pi-angle-left" (click)="back()"></i>
-          <i class="sum-price" *ngIf="product.price">{{product.price | currencyConv: "EUR" : currency}}</i>
+            <i class="sum-price" *ngIf="product.price">{{
+              product.price | currencyConv: "EUR":currency
+            }}</i>
             <i class="pi pi-angle-right" (click)="next()"></i>
           </div>
           <br />

@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../models/product-info.model';
-import {environment} from "../../../../environments/environment";
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-product-card-full',
