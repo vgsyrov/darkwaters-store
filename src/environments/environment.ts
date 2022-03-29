@@ -8,7 +8,7 @@ export const environment = {
   config: {
     host: 'http://localhost:34000',
     baseHref: '',
-    supportedCurrencies: ['RUR', 'USD', 'EUR', 'CAP'],
+    supportedCurrencies: ['RUR', 'USD', 'EUR'],
   },
 };
 

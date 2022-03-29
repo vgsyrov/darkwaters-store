@@ -13,7 +13,6 @@ export class ProductService {
     return this.http.get<any>('/products').pipe(
       map((res) => <IProduct[]>res.data),
       map((data) => {
-        console.log(data);
         return data;
       })
     );
