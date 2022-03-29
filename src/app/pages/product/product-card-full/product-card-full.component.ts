@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { IProduct } from '../../../models/product-info.model';
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-product-card-full',
@@ -16,6 +17,7 @@ import { IProduct } from '../../../models/product-info.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardFullComponent implements OnInit {
+  public readonly currencies: string[] = environment.config.supportedCurrencies;
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,

@@ -22,9 +22,13 @@
       <div class="grid">
         <div class="col">Характеристики</div>
         <div class="col">
-          <i class="sum-price" *ngIf="product.price">{{
-            product.price | currency: "EUR"
-          }}</i>
+          <div
+            *appCarousel="let currency of currencies; next as next; back as back"
+          >
+            <i class="pi pi-angle-left" (click)="back()"></i>
+          <i class="sum-price" *ngIf="product.price">{{product.price | currencyConv: "EUR" : currency}}</i>
+            <i class="pi pi-angle-right" (click)="next()"></i>
+          </div>
           <br />
           <p-button
             icon="pi pi-shopping-cart"

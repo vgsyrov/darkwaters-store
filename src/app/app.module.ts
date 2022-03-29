@@ -6,16 +6,17 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { CurrencyPipe } from './pipes/currency.pipe';
+
 import { RouterModule } from '@angular/router';
 import { UrlBaseInterceptor } from './services/url-base.interceptor';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
 import { ProductModule } from './pages/product/product.module';
+import {SharedModule} from "./shared/shared/shared.module";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CurrencyPipe],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     RouterModule,
@@ -26,6 +27,7 @@ import { ProductModule } from './pages/product/product.module';
     ProgressSpinnerModule,
     ButtonModule,
     ProductModule,
+    SharedModule
   ],
   providers: [
     {
@@ -35,6 +37,5 @@ import { ProductModule } from './pages/product/product.module';
     },
   ],
   bootstrap: [AppComponent],
-  exports: [],
 })
 export class AppModule {}

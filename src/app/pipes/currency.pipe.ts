@@ -8,22 +8,22 @@ const currencySigns = new Map<string, string>([
 ]);
 
 @Pipe({
-  name: 'currency',
+  name: 'currencyConv',
 })
 export class CurrencyPipe implements PipeTransform {
-  transform(value: number, format: string): string {
+  transform(value: number, currencyFrom: string, currencyTo: string): string {
     return (
-      currencySigns.get(format) +
+      currencySigns.get(currencyTo) +
       ' ' +
-      this.calculateSum(value, format).toFixed(2)
+      CurrencyPipe.calculateSum(value, currencyFrom, currencyTo).toFixed(2)
     );
   }
 
-  private calculateSum(value: number, currency: string): number {
-    return value / CurrencyPipe.getCurs(currency);
+  private static calculateSum(value: number, currencyFrom: string, currencyTo: string): number {
+    return value * CurrencyPipe.getCurs(currencyFrom) / CurrencyPipe.getCurs(currencyTo);
   }
 
-  private static getCurs(currency: string): number {
+  private static getCurs( currency: string): number {
     switch (currency) {
       case 'USD':
         return 70;
@@ -31,6 +31,8 @@ export class CurrencyPipe implements PipeTransform {
         return 80;
       case 'RUR':
         return 1;
+      case 'CUP':
+        return 100;
     }
     return 1;
   }
