@@ -46,6 +46,8 @@ export class ProductListComponent implements OnInit {
 
   onMenuClicked(s: any) {
     console.log(s);
-    this.products = this.productsFullList.filter(product => product.category === s);
+    this.products = this.productsFullList.filter(
+      (product) => product.category === s
+    );
   }
 }
