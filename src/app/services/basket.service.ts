@@ -13,7 +13,6 @@ export class BasketService {
   }
 
   addProductToBasket(product: IProduct) {
-    console.log('added to basket service');
     this._basket$.next([...this._basket$.value, product]);
   }
 }

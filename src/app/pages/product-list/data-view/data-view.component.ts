@@ -64,8 +64,6 @@ export class DataViewComponent implements OnInit {
 
   onAddToCart(event: any, id: string) {
     event.stopPropagation();
-    console.log(`otladka ---> add to cart ${id}`);
-    console.log(event.target);
     this.basketService.addProductToBasket(
       this.products.find((product) => product.id === id)!
     );
