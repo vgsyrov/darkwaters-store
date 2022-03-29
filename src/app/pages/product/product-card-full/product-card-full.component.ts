@@ -25,13 +25,12 @@ export class ProductCardFullComponent implements OnInit {
   public product: IProduct | null = null;
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const productId = params['id'];
-      console.log(`incumming param = ${productId}`);
+    const productId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (productId) {
       this.productService.getProduct(productId).then((product) => {
         this.product = product;
         this.changeDetectorRef.markForCheck();
       });
-    });
+    }
   }
 }

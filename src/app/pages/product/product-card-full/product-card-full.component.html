@@ -1,18 +1,6 @@
 <div class="col" *ngIf="product">
   <div class="grid">
-    <div class="col">
-      <div
-        *appCarousel="let image of product.image; next as next; back as back"
-      >
-        <i class="pi pi-angle-left" (click)="back()"></i>
-        <img
-          [src]="'assets/data/images/product/' + image"
-          [alt]="product.name"
-        />
-        <i class="pi pi-angle-right" (click)="next()"></i>
-      </div>
-    </div>
-    <div class="col" *ngIf="product.image">
+    <div class="col-3" *ngIf="product.image">
       <p-carousel [value]="product.image">
         <ng-template let-image pTemplate="item">
           <img

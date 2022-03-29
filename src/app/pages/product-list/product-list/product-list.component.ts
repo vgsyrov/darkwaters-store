@@ -16,6 +16,7 @@ import { ProductService } from '../../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
   public products: IProduct[] = [];
+  public productsFullList: IProduct[] = [];
   public categories: MenuItem[] = [];
 
   constructor(
@@ -27,6 +28,7 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe((data) => {
       this.changeDetectorRef.markForCheck();
       this.products = data;
+      this.productsFullList = data;
     });
     this.productService.getCategories().subscribe((categories) => {
       this.categories = categories.map((c: string) => {
@@ -44,5 +46,6 @@ export class ProductListComponent implements OnInit {
 
   onMenuClicked(s: any) {
     console.log(s);
+    this.products = this.productsFullList.filter(product => product.category === s);
   }
 }
