@@ -32,7 +32,6 @@ export class SideMenuComponent {
   menuItems: MenuItem[] = [];
 
   onMenuClicked(clickedMenu: string) {
-    this.selectedCategory.emit(clickedMenu)
+    this.selectedCategory.emit(clickedMenu);
   }
-
 }

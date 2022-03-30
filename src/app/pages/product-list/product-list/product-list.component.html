@@ -1,6 +1,10 @@
 <div class="grid">
   <div class="col-fixed" style="width: 20%">
-    <app-side-menu [categories]="categories" (selectedCategory)="onSelectedCategory($event)"> </app-side-menu>
+    <app-side-menu
+      [categories]="categories"
+      (selectedCategory)="onSelectedCategory($event)"
+    >
+    </app-side-menu>
   </div>
   <div class="col">
     <app-data-view #dataView [products]="products"> </app-data-view>
