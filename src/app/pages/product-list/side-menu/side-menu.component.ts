@@ -1,8 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
-  OnInit,
+  Output,
 } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
@@ -14,5 +15,24 @@ import { MenuItem } from 'primeng/api';
 })
 export class SideMenuComponent {
   @Input()
-  items: MenuItem[] = [];
+  set categories(catList: string[]) {
+    this.menuItems = catList.map((c: string) => {
+      return {
+        label: c,
+        command: () => {
+          this.onMenuClicked(c);
+        },
+      };
+    });
+  }
+
+  @Output()
+  selectedCategory = new EventEmitter<string>();
+
+  menuItems: MenuItem[] = [];
+
+  onMenuClicked(clickedMenu: string) {
+    this.selectedCategory.emit(clickedMenu)
+  }
+
 }

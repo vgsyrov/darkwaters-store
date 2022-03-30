@@ -5,7 +5,6 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { IProduct } from '../../../models/product-info.model';
-import { MenuItem } from 'primeng/api';
 import { ProductService } from '../../../services/product.service';
 
 @Component({
@@ -17,7 +16,7 @@ import { ProductService } from '../../../services/product.service';
 export class ProductListComponent implements OnInit {
   public products: IProduct[] = [];
   public productsFullList: IProduct[] = [];
-  public categories: MenuItem[] = [];
+  public categories: string[] = [];
 
   constructor(
     private productService: ProductService,
@@ -31,21 +30,14 @@ export class ProductListComponent implements OnInit {
       this.productsFullList = data;
     });
     this.productService.getCategories().subscribe((categories) => {
-      this.categories = categories.map((c: string) => {
-        this.changeDetectorRef.markForCheck();
-        return {
-          label: c,
-          command: () => {
-            this.onMenuClicked(c);
-          },
-        };
-      });
+      this.changeDetectorRef.markForCheck();
+      this.categories = categories;
     });
   }
 
-  onMenuClicked(s: any) {
+  onSelectedCategory(selectedCategory: string) {
     this.products = this.productsFullList.filter(
-      (product) => product.category === s
+      (product) => product.category === selectedCategory
     );
   }
 }
