@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { IUser } from '../../models/user.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -26,8 +27,10 @@ export class HeaderComponent {
 
   public readonly applicationName: string = environment.applicationName;
 
+  constructor(private router: Router) { }
+
   onHamburgerClicked() {
-    console.log('hamburger');
+    this.router.navigate([``]);
   }
 
   onCartClicked() {

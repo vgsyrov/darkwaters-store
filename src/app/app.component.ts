@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   public getUser$(): Observable<IUser> {
     return timer(2000).pipe(
       map(() => ({
-        name: 'Chosen One' + environment.production,
+        name: 'Chosen One',
         role: 'Guest',
         shopSum: {
           value: 1000,
