@@ -13,25 +13,25 @@
         >
           <i class="pi pi-angle-left" (click)="back()"></i>
           {{
-          user.shopSum.value
-            | currencyConv: user.shopSum.defaultCurrency:currency
+            user.shopSum.value
+              | currencyConv: user.shopSum.defaultCurrency:currency
           }}
           <i class="pi pi-angle-right" (click)="next()"></i>
         </div>
       </ng-container>
     </div>
 
-    <i>
-
-    </i>
+    <i> </i>
 
     <i *ngIf="getBasketSize() > 0; else onlyCartButton">
-      <i pBadge [value]="''+getBasketSize()" severity="warning">
-        <p-button icon="pi pi-shopping-cart" (click)="onCartClicked()"></p-button>
+      <i pBadge [value]="'' + getBasketSize()" severity="warning">
+        <p-button
+          icon="pi pi-shopping-cart"
+          (click)="onCartClicked()"
+        ></p-button>
       </i>
     </i>
   </div>
-
 </p-toolbar>
 
 <ng-template #spinner>

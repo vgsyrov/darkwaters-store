@@ -4,7 +4,7 @@ import { IUser } from './models/user.model';
 import { environment } from '../environments/environment';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import {BasketService} from "./services/basket.service";
+import { BasketService } from './services/basket.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(
     private titleService: Title,
     private router: Router,
-    private bsaketService: BasketService,
+    private bsaketService: BasketService
   ) {
     const startMode = !environment.production ? ' DEV' : '';
     this.titleService.setTitle(this.title + startMode);
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.user$ = this.getUser$();
     this.basketSize$ = this.bsaketService.basket$.pipe(
-      map(basket => basket ? basket.length: 0)
+      map((basket) => (basket ? basket.length : 0))
     );
   }
 

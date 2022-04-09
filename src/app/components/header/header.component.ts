@@ -8,7 +8,7 @@ import {
 import { environment } from '../../../environments/environment';
 import { IUser } from '../../models/user.model';
 import { Router } from '@angular/router';
-import {Observable, of} from "rxjs";
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -28,8 +28,6 @@ export class HeaderComponent {
 
   @Output()
   basketClicked = new EventEmitter<void>();
-
-
 
   public readonly applicationName: string = environment.applicationName;
 
