@@ -5,15 +5,14 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import {map, Observable} from 'rxjs';
-import {BasketService} from "../services/basket.service";
+import { map, Observable } from 'rxjs';
+import { BasketService } from '../services/basket.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BasketGuard implements CanActivate {
-
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,8 +22,6 @@ export class BasketGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.basketService.basket$.pipe(
-      map(basket => basket.length > 0)
-      );
+    return this.basketService.basket$.pipe(map((basket) => basket.length > 0));
   }
 }
