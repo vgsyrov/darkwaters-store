@@ -14,6 +14,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
 import { ProductModule } from './pages/product/product.module';
 import { SharedModule } from './shared/shared/shared.module';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -28,6 +29,7 @@ import { SharedModule } from './shared/shared/shared.module';
     ButtonModule,
     ProductModule,
     SharedModule,
+    BadgeModule,
   ],
   providers: [
     {

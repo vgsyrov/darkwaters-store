@@ -1,6 +1,7 @@
 <app-header
   [user]="user$ | async"
   [currencies]="currencies"
+  [basketSize]="basketSize$ | async"
   (basketClicked)="onBasketClicked()"
 ></app-header>
 

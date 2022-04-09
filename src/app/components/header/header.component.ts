@@ -8,6 +8,7 @@ import {
 import { environment } from '../../../environments/environment';
 import { IUser } from '../../models/user.model';
 import { Router } from '@angular/router';
+import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -22,8 +23,13 @@ export class HeaderComponent {
   @Input()
   public user: IUser | null = null;
 
+  @Input()
+  public basketSize: number | null = 0;
+
   @Output()
   basketClicked = new EventEmitter<void>();
+
+
 
   public readonly applicationName: string = environment.applicationName;
 
@@ -35,5 +41,12 @@ export class HeaderComponent {
 
   onCartClicked() {
     this.basketClicked.emit();
+  }
+
+  getBasketSize(): number {
+    if (this.basketSize) {
+      return this.basketSize;
+    }
+    return 0;
   }
 }
