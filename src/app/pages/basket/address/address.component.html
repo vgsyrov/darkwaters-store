@@ -1,0 +1,57 @@
+<div
+  class="flex justify-content-center flex-wrap card-container yellow-container"
+>
+  <div>
+    <form [formGroup]="addressForm">
+      <label class="address-header">Адрес доставки:</label>
+      <span class="p-float-label">
+        <input
+          id="country-input"
+          type="text"
+          pInputText
+          formControlName="country"
+        />
+        <label for="country-input">Страна</label>
+      </span>
+
+      <span class="p-float-label">
+        <input
+          id="street-input"
+          type="text"
+          pInputText
+          formControlName="street"
+        />
+        <label for="street-input">Улица</label>
+      </span>
+
+      <label class="address-home-group-label">Дом:</label>
+      <div formGroupName="homeInfo">
+        <span class="p-float-label">
+          <input
+            id="block-input"
+            type="text"
+            pInputText
+            formControlName="block"
+          />
+          <label for="block-input">Строение/корпус</label>
+        </span>
+
+        <span class="p-float-label">
+          <input
+            id="number-input"
+            type="text"
+            pInputText
+            formControlName="number"
+          />
+          <label for="number-input">Номер</label>
+        </span>
+      </div>
+    </form>
+    <div class="address-button">
+      <p-button label="Отправить"></p-button>
+    </div>
+    <div class="address-button">
+      <p-button label="Очистить"></p-button>
+    </div>
+  </div>
+</div>
