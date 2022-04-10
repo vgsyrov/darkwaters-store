@@ -1,5 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import {select, Store} from "@ngrx/store";
+import {IState} from "../../../store/reducers";
+import {addAddress, resetAddress} from "../../../store/actions/address.actions";
+import {Observable, tap} from "rxjs";
+import {IAddressState} from "../../../store/state/address.state";
+import {addressFeatureSelector} from "../../../store/reducers/address.reducer";
 
 @Component({
   selector: 'app-address',
@@ -8,6 +14,12 @@ import { FormBuilder, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddressComponent {
+  address$: Observable<IAddressState> = this.store.pipe(
+    select(addressFeatureSelector),
+    tap((address) => {
+      this.addressForm.setValue(address);
+    }),
+  );
   addressForm = this.formBuilder.group({
     country: ['RUS', [Validators.required]],
     city: ['Moscow', [Validators.required]],
@@ -18,9 +30,16 @@ export class AddressComponent {
     }),
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store<IState>
+  ) {}
 
-  onPush() {}
+  onPush() {
+    this.store.dispatch(addAddress(this.addressForm.getRawValue()));
+  }
 
-  onReset() {}
+  onReset() {
+    this.store.dispatch(resetAddress());
+  }
 }

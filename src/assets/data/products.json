@@ -11,7 +11,9 @@
       "quantity": 24,
       "inventoryStatus": "INSTOCK",
       "rating": 5,
-      "feedbacksCount": 210
+      "feedbacksCount": 210,
+      "count": 0
+
     },
     {
       "id": "1001",
@@ -24,7 +26,8 @@
       "quantity": 61,
       "inventoryStatus": "INSTOCK",
       "rating": 4,
-      "feedbacksCount": 1210
+      "feedbacksCount": 1210,
+      "count": 0
     }
   ]
 }

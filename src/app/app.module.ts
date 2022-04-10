@@ -15,6 +15,8 @@ import { ButtonModule } from 'primeng/button';
 import { ProductModule } from './pages/product/product.module';
 import { SharedModule } from './shared/shared/shared.module';
 import { BadgeModule } from 'primeng/badge';
+import { StoreModule } from "@ngrx/store";
+import { reducers } from "./store/reducers";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -30,6 +32,7 @@ import { BadgeModule } from 'primeng/badge';
     ProductModule,
     SharedModule,
     BadgeModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [
     {

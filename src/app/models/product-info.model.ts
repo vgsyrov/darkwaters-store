@@ -10,4 +10,5 @@ export interface IProduct {
   image?: string[];
   rating?: number;
   feedbacksCount?: number;
+  count?: number;
 }
