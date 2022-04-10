@@ -8,6 +8,7 @@ import { AddressComponent } from './address/address.component';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
+import { QuantityInputModule } from '../../components/quantity-input/quantity-input.module';
 
 @NgModule({
   declarations: [BasketComponent, AddressComponent],
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
+    QuantityInputModule,
   ],
 })
 export class BasketModule {}
