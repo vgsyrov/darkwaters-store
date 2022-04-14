@@ -5,11 +5,11 @@ import { addressReducer, ADDRESS_FEATURE } from './address.reducer';
 import { productsReducer, PRODUCTS_FEATURE } from './products.reducer';
 
 export interface IState {
-	[ADDRESS_FEATURE]: IAddressState;
-	[PRODUCTS_FEATURE]: IProductsState;
-} // {address: IAddressState}
+  [ADDRESS_FEATURE]: IAddressState;
+  [PRODUCTS_FEATURE]: IProductsState;
+}
 
 export const reducers: ActionReducerMap<IState> = {
-	[ADDRESS_FEATURE]: addressReducer,
-	[PRODUCTS_FEATURE]: productsReducer,
+  [ADDRESS_FEATURE]: addressReducer,
+  [PRODUCTS_FEATURE]: productsReducer,
 };

@@ -1,6 +1,6 @@
 export interface IAddressState {
   country: string;
-  city: '',
+  city: '';
   street: string;
   homeInfo: {
     number: string;

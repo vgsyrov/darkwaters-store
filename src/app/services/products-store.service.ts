@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subscription, take} from "rxjs";
-import {IProduct} from "../models/product-info.model";
-import {ProductService} from "./product.service";
-import {Store} from "@ngrx/store";
-import {IState} from "../store/reducers";
+import { BehaviorSubject, Observable, Subscription, take } from 'rxjs';
+import { IProduct } from '../models/product-info.model';
+import { ProductService } from './product.service';
+import { Store } from '@ngrx/store';
+import { IState } from '../store/reducers';
 import { setProducts } from '../store/actions/products.actions';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsStoreService {
   private _products$ = new BehaviorSubject<IProduct[]>([]);
@@ -17,7 +17,10 @@ export class ProductsStoreService {
     return this._products$.asObservable();
   }
 
-  constructor(private productsService: ProductService, private store: Store<IState>) {}
+  constructor(
+    private productsService: ProductService,
+    private store: Store<IState>
+  ) {}
 
   loadProducts() {
     if (this.getProductsSubscription) {
@@ -35,4 +38,5 @@ export class ProductsStoreService {
 
   setProducts(products: IProduct[]) {
     this._products$.next(products);
-  }}
+  }
+}

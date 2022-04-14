@@ -6,16 +6,19 @@ import { loadProducts, setProducts } from '../actions/products.actions';
 
 @Injectable()
 export class ProductsEffects {
-	constructor(private actions$: Actions, private productsService: ProductService) {}
+  constructor(
+    private actions$: Actions,
+    private productsService: ProductService
+  ) {}
 
-	loadProducts$ = createEffect(() =>
-		this.actions$.pipe(
-			ofType(loadProducts),
-			switchMap(() =>
-				this.productsService
-					.getProducts()
-					.pipe(switchMap((products) => [setProducts(products)])),
-			),
-		),
-	);
+  loadProducts$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadProducts),
+      switchMap(() =>
+        this.productsService
+          .getProducts()
+          .pipe(switchMap((products) => [setProducts(products)]))
+      )
+    )
+  );
 }

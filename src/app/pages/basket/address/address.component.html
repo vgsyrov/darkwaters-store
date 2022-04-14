@@ -15,12 +15,7 @@
       </span>
 
       <span class="p-float-label">
-        <input
-          id="city-input"
-          type="text"
-          pInputText
-          formControlName="city"
-        />
+        <input id="city-input" type="text" pInputText formControlName="city" />
         <label for="city-input">Город</label>
       </span>
 
@@ -66,7 +61,4 @@
   </div>
 </div>
 
-
-{{
-  address$ | async | json
-}}
+{{ address$ | async | json }}

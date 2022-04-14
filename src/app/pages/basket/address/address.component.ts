@@ -1,11 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {select, Store} from "@ngrx/store";
-import {IState} from "../../../store/reducers";
-import {addAddress, resetAddress} from "../../../store/actions/address.actions";
-import {Observable, tap} from "rxjs";
-import {IAddressState} from "../../../store/state/address.state";
-import {addressFeatureSelector} from "../../../store/reducers/address.reducer";
+import { select, Store } from '@ngrx/store';
+import { IState } from '../../../store/reducers';
+import {
+  addAddress,
+  resetAddress,
+} from '../../../store/actions/address.actions';
+import { Observable, tap } from 'rxjs';
+import { IAddressState } from '../../../store/state/address.state';
+import { addressFeatureSelector } from '../../../store/reducers/address.reducer';
 
 @Component({
   selector: 'app-address',
@@ -18,7 +21,7 @@ export class AddressComponent {
     select(addressFeatureSelector),
     tap((address) => {
       this.addressForm.setValue(address);
-    }),
+    })
   );
   addressForm = this.formBuilder.group({
     country: ['RUS', [Validators.required]],
@@ -30,10 +33,7 @@ export class AddressComponent {
     }),
   });
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private store: Store<IState>
-  ) {}
+  constructor(private formBuilder: FormBuilder, private store: Store<IState>) {}
 
   onPush() {
     this.store.dispatch(addAddress(this.addressForm.getRawValue()));
