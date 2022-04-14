@@ -6,10 +6,10 @@ import {
 } from '@angular/core';
 import { IProduct } from '../../../models/product-info.model';
 import { ProductService } from '../../../services/product.service';
-import {select, Store} from "@ngrx/store";
-import {IState} from "../../../store/reducers";
-import {getProducts} from "../../../store/reducers/products.reducer";
-import {loadProducts} from "../../../store/actions/products.actions";
+import { select, Store } from '@ngrx/store';
+import { IState } from '../../../store/reducers';
+import { getProducts } from '../../../store/reducers/products.reducer';
+import { loadProducts } from '../../../store/actions/products.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -25,8 +25,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private changeDetectorRef: ChangeDetectorRef,
-    private store: Store<IState>,
-
+    private store: Store<IState>
   ) {}
 
   ngOnInit(): void {
