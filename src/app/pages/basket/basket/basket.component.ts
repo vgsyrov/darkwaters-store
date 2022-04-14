@@ -1,6 +1,11 @@
-import {Component, OnInit, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  OnDestroy,
+} from '@angular/core';
 import { BasketService } from '../../../services/basket.service';
-import {Observable, Subscription, tap} from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import { IProduct } from '../../../models/product-info.model';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -10,8 +15,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./basket.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasketComponent implements OnDestroy{
- basket$: Observable<IProduct[]> = this.basketService.basket$;
+export class BasketComponent implements OnDestroy {
+  basket$: Observable<IProduct[]> = this.basketService.basket$;
 
   form = this.formBuilder.group({
     counters: this.formBuilder.array([]),
@@ -28,7 +33,7 @@ export class BasketComponent implements OnDestroy{
 
   ngOnInit(): void {
     this.form.valueChanges.subscribe(console.log);
-    this.basketSubs = this.basketService.basket$.subscribe(basket => {
+    this.basketSubs = this.basketService.basket$.subscribe((basket) => {
       this.form.setControl(
         'counters',
         this.formBuilder.array(
