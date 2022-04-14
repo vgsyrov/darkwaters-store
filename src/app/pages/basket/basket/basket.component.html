@@ -17,7 +17,7 @@
 
 <form [formGroup]="form">
   <p-listbox formArrayName="counters">
-    <div *ngFor="let product of basket$ | async; index as index">
+    <div *ngFor="let product of (basket$ | async); index as index">
       <div *ngIf="product && product.image">
         <img [src]="'assets/data/images/product/' + product.image[0]" />
         <div>{{ product.name }}</div>

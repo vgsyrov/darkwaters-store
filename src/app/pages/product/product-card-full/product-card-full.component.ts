@@ -31,7 +31,7 @@ export class ProductCardFullComponent implements OnInit {
   ngOnInit(): void {
     const productId = this.activatedRoute.snapshot.paramMap.get('id');
     if (productId) {
-      this.productService.getProduct(productId).then((product) => {
+      this.productService.getProduct(productId).subscribe((product) => {
         this.product = product;
         this.changeDetectorRef.markForCheck();
       });

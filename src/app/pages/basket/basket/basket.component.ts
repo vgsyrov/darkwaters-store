@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
 import { BasketService } from '../../../services/basket.service';
-import { Observable, tap } from 'rxjs';
+import {Observable, Subscription, tap} from 'rxjs';
 import { IProduct } from '../../../models/product-info.model';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -10,9 +10,25 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./basket.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasketComponent {
-  basket$: Observable<IProduct[]> = this.basketService.basket$.pipe(
-    tap((basket) => {
+export class BasketComponent implements OnDestroy{
+ basket$: Observable<IProduct[]> = this.basketService.basket$;
+
+  form = this.formBuilder.group({
+    counters: this.formBuilder.array([]),
+  });
+
+  private basketSubs: Subscription | null;
+
+  constructor(
+    private basketService: BasketService,
+    private formBuilder: FormBuilder
+  ) {
+    this.basketSubs = null;
+  }
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(console.log);
+    this.basketSubs = this.basketService.basket$.subscribe(basket => {
       this.form.setControl(
         'counters',
         this.formBuilder.array(
@@ -21,18 +37,12 @@ export class BasketComponent {
             .map((value) => [value, [Validators.max(10), Validators.min(0)]])
         )
       );
-    })
-  );
-  form = this.formBuilder.group({
-    counters: this.formBuilder.array([]),
-  });
+    });
+  }
 
-  constructor(
-    private basketService: BasketService,
-    private formBuilder: FormBuilder
-  ) {}
-
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe(console.log);
+  ngOnDestroy(): void {
+    if (this.basketSubs) {
+      this.basketSubs.unsubscribe();
+    }
   }
 }

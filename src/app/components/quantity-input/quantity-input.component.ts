@@ -56,13 +56,19 @@ export class QuantityInputComponent implements ControlValueAccessor, Validator {
     this.onTouch();
   }
 
-  registerOnChange(fn: any): void {}
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.touch = true;
+  }
 
   validate(control: AbstractControl): ValidationErrors | null {
     return { error: 'error' };
   }
 
-  writeValue(obj: any): void {}
+  writeValue(obj: any): void {
+    this.quantity = obj;
+  }
 }
