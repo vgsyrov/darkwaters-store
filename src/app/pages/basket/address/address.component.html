@@ -16,6 +16,16 @@
 
       <span class="p-float-label">
         <input
+          id="city-input"
+          type="text"
+          pInputText
+          formControlName="city"
+        />
+        <label for="city-input">Город</label>
+      </span>
+
+      <span class="p-float-label">
+        <input
           id="street-input"
           type="text"
           pInputText
@@ -48,10 +58,15 @@
       </div>
     </form>
     <div class="address-button">
-      <p-button label="Отправить"></p-button>
+      <p-button label="Отправить" (click)="onPush()"></p-button>
     </div>
     <div class="address-button">
-      <p-button label="Очистить"></p-button>
+      <p-button label="Очистить" (click)="onReset()"></p-button>
     </div>
   </div>
 </div>
+
+
+{{
+  address$ | async | json
+}}

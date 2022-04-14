@@ -11,7 +11,8 @@
       "quantity": 24,
       "inventoryStatus": "INSTOCK",
       "rating": 5,
-      "feedbacksCount": 210
+      "feedbacksCount": 210,
+      "count": 0
     },
     {
       "id": "1001",
@@ -23,7 +24,8 @@
       "category": "Аксессуары",
       "quantity": 61,
       "inventoryStatus": "INSTOCK",
-      "rating": 4
+      "rating": 4,
+      "count": 0
     },
     {
       "id": "1002",
@@ -35,7 +37,8 @@
       "category": "Фитнес и спорт",
       "quantity": 2,
       "inventoryStatus": "LOWSTOCK",
-      "rating": 3
+      "rating": 3,
+      "count": 0
     },
     {
       "id": "1003",
