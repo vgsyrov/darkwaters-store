@@ -1,10 +1,12 @@
-import { createFeatureSelector, createReducer, on } from '@ngrx/store';
-import { resetProducts, setProducts, updateProductsCount } from '../actions/products.actions';
+import {createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
+import { resetProducts, setProducts, updateProductsCount, addToBasket } from '../actions/products.actions';
 import {
 	IProductsState,
 	productsEntityAdapter,
 	productsInitialState,
 } from '../state/products.state';
+import {IProduct} from "../../models/product-info.model";
+import {Dictionary} from "@ngrx/entity";
 
 export const PRODUCTS_FEATURE = 'products';
 
@@ -23,24 +25,21 @@ export const productsReducer = createReducer<IProductsState>(
 			state,
 		),
 	),
+  on(addToBasket, (state, {id}) => ({
+    ...state,
+    basketIds: [
+      ...state.basketIds,
+      id
+    ]
+  }))
 );
 
 export const productsFeatureSelector = createFeatureSelector<IProductsState>(PRODUCTS_FEATURE);
 
-// export const getProductsIds = createSelector(
-//     productsFeatureSelector,
-//     (state: IProductsState) => selectIds(state),
-// )
-
-// export const getProducts = createSelector(
-//     productsFeatureSelector,
-//     (state: IProductsState) => selectAll(state),
-// )
-
-// export const getBasketIds = createSelector(
-//     productsFeatureSelector,
-//     (state: IProductsState) => state.basketIds,
-// )
+export const getBasketIds = createSelector(
+  productsFeatureSelector,
+  (products: IProductsState) => products.basketIds
+);
 
 export const {
 	selectAll: getProducts,
@@ -48,7 +47,7 @@ export const {
 	selectEntities: getProductsEntities,
 } = productsEntityAdapter.getSelectors(productsFeatureSelector);
 
-// export const getProduct = createSelector(
-//     getProductsEntities,
-//     (products: Dictionary<IProduct>, id: string) => products[id],
-// )
+export const getProduct = createSelector(
+    getProductsEntities,
+    (products: Dictionary<IProduct>, id: string) => products[id],
+)
