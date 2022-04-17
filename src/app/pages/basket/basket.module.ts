@@ -9,7 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuantityInputModule } from '../../components/quantity-input/quantity-input.module';
-import { ToastModule } from "primeng/toast";
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [BasketComponent, AddressComponent],
@@ -22,7 +22,6 @@ import { ToastModule } from "primeng/toast";
     InputTextModule,
     QuantityInputModule,
     ToastModule,
-
   ],
 })
 export class BasketModule {}
