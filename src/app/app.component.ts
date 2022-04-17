@@ -5,9 +5,9 @@ import { environment } from '../environments/environment';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BasketService } from './services/basket.service';
-import {IState} from "./store/reducers";
-import {select, Store} from "@ngrx/store";
-import {userFeatureSelector} from "./store/reducers/user.reducer";
+import { IState } from './store/reducers';
+import { select, Store } from '@ngrx/store';
+import { userFeatureSelector } from './store/reducers/user.reducer';
 
 @Component({
   selector: 'app-root',
@@ -38,9 +38,7 @@ export class AppComponent implements OnInit {
   }
 
   public getUser$(): Observable<IUser> {
-    return this.store.pipe(
-      select(userFeatureSelector)
-    );
+    return this.store.pipe(select(userFeatureSelector));
     // return timer(2000).pipe(
     //   map(() => ({
     //     name: 'Chosen One',

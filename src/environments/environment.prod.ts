@@ -5,6 +5,6 @@ export const environment = {
     host: 'http://localhost:34000',
     baseHref: '',
     supportedCurrencies: ['RUR', 'USD', 'EUR'],
-    mainCurrency: 'EUR'
+    mainCurrency: 'EUR',
   },
 };

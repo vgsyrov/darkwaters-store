@@ -10,17 +10,17 @@ import { SelectItem } from 'primeng/api';
 
 import { IProduct } from '../../../models/product-info.model';
 import { BasketService } from '../../../services/basket.service';
-import {IState} from "../../../store/reducers";
-import {Store} from "@ngrx/store";
-import {addShopSum} from "../../../store/actions/user.actions";
-import {CurrencyPipe} from "../../../pipes/currency.pipe";
+import { IState } from '../../../store/reducers';
+import { Store } from '@ngrx/store';
+import { addShopSum } from '../../../store/actions/user.actions';
+import { CurrencyPipe } from '../../../pipes/currency.pipe';
 
 @Component({
   selector: 'app-data-view',
   templateUrl: './data-view.component.html',
   styleUrls: ['./data-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CurrencyPipe]
+  providers: [CurrencyPipe],
 })
 export class DataViewComponent implements OnInit {
   @Input()
@@ -80,6 +80,14 @@ export class DataViewComponent implements OnInit {
     this.basketService.addProductToBasket(
       this.products.find((product) => product.id === product.id)!
     );
-    this.store.dispatch(addShopSum( CurrencyPipe.calculateSum(product.price!, this.storeCurrency, this.userCurrency) ));
+    this.store.dispatch(
+      addShopSum(
+        CurrencyPipe.calculateSum(
+          product.price!,
+          this.storeCurrency,
+          this.userCurrency
+        )
+      )
+    );
   }
 }

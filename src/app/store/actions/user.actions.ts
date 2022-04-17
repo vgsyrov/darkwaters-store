@@ -1,5 +1,4 @@
-import {createAction} from "@ngrx/store";
-
+import { createAction } from '@ngrx/store';
 
 enum UserActionTypes {
   AddShopSum = '[User] Add shop sum',
@@ -7,9 +6,7 @@ enum UserActionTypes {
   ResetShopSum = '[User] Reset shop sum',
 }
 
-export const resetShopSum = createAction(
-  UserActionTypes.ReduceShopSum
-);
+export const resetShopSum = createAction(UserActionTypes.ReduceShopSum);
 
 export const addShopSum = createAction(
   UserActionTypes.AddShopSum,

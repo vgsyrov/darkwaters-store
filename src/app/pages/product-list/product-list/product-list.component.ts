@@ -13,9 +13,8 @@ import {
   getProducts,
 } from '../../../store/reducers/products.reducer';
 import { loadProducts } from '../../../store/actions/products.actions';
-import {environment} from "../../../../environments/environment";
-import {userFeatureSelector} from "../../../store/reducers/user.reducer";
-
+import { environment } from '../../../../environments/environment';
+import { userFeatureSelector } from '../../../store/reducers/user.reducer';
 
 @Component({
   selector: 'app-product-list',
