@@ -7,6 +7,11 @@
     </app-side-menu>
   </div>
   <div class="col">
-    <app-data-view #dataView [products]="products"> </app-data-view>
+    <app-data-view #dataView
+                   [products]="products"
+                   [storeCurrency]="mainCurrency"
+                   [userCurrency]="userCurrency"
+    >
+    </app-data-view>
   </div>
 </div>

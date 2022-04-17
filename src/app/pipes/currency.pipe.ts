@@ -19,7 +19,7 @@ export class CurrencyPipe implements PipeTransform {
     );
   }
 
-  private static calculateSum(
+  public static calculateSum(
     value: number,
     currencyFrom: string,
     currencyTo: string

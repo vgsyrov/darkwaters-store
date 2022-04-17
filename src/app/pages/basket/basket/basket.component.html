@@ -1,19 +1,39 @@
-<!--<form [formGroup]="form">-->
-<!--  <mat-list role="list" formArrayName="counters">-->
-<!--    <mat-list-item *ngFor="let product of (basket$ | async); index as index" role="listitem">-->
-<!--      <div *ngIf="product && product.image">-->
-<!--        <img class="fix-size" [src]="'assets/data/images/product/' + product.image[0]">-->
+<!--<div *ngIf="basket$ | async as basket">-->
+<!--  <p-orderList-->
+<!--    [value]="basket"-->
+<!--    [listStyle]="{ 'max-height': '30rem' }"-->
+<!--    header="Корзина"-->
+<!--    filterBy="name"-->
+<!--    filterPlaceholder="Фильтр по имени"-->
+<!--    [dragdrop]="true"-->
+<!--  >-->
+<!--    <ng-template let-product pTemplate="item">-->
+<!--      <div class="product-item">-->
+<!--        <div class="image-container">-->
+<!--          <img-->
+<!--            [src]="'assets/data/images/product/' + product.image[0]"-->
+<!--            [alt]="product.name"-->
+<!--            class="product-image"-->
+<!--          />-->
+<!--        </div>-->
+<!--        <div class="product-list-detail">-->
+<!--          <h5 class="mb-2">{{ product.name }}</h5>-->
+<!--          <i class="pi pi-tag product-category-icon"></i>-->
+<!--          <span class="product-category">{{ product.category }}</span>-->
+<!--        </div>-->
+<!--        <div class="product-list-action">-->
+<!--          <h6 class="mb-2">${{ product.price }}</h6>-->
+<!--          <span-->
+<!--            [class]="-->
+<!--              'product-badge status-' + product.inventoryStatus.toLowerCase()-->
+<!--            "-->
+<!--          >{{ product.inventoryStatus }}</span>-->
+<!--          <app-quantity-input [formControlName]="index"> </app-quantity-input>-->
+<!--        </div>-->
 <!--      </div>-->
-
-<!--      <p>{{product.name}}</p>-->
-<!--      &lt;!&ndash; <input type="number" matInput [formControlName]="index"/> &ndash;&gt;-->
-<!--      <app-quantity-input-->
-<!--        [formControlName]="index"-->
-<!--      ></app-quantity-input>-->
-<!--      {{form.get(['counters', index])?.errors | json}}-->
-<!--    </mat-list-item>-->
-<!--  </mat-list>-->
-<!--</form>-->
+<!--    </ng-template>-->
+<!--  </p-orderList>-->
+<!--</div>-->
 
 <form [formGroup]="form">
   <p-listbox formArrayName="counters">

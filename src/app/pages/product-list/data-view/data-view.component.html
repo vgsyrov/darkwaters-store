@@ -57,7 +57,7 @@
             <p-button
               icon="pi pi-shopping-cart"
               label="В корзину"
-              (click)="onAddToCart($event, product.id)"
+              (click)="onAddToCart($event, product)"
               [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
             >
             </p-button>

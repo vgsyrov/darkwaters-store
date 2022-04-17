@@ -5,6 +5,9 @@ import { environment } from '../environments/environment';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BasketService } from './services/basket.service';
+import {IState} from "./store/reducers";
+import {select, Store} from "@ngrx/store";
+import {userFeatureSelector} from "./store/reducers/user.reducer";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +23,8 @@ export class AppComponent implements OnInit {
   constructor(
     private titleService: Title,
     private router: Router,
-    private bsaketService: BasketService
+    private bsaketService: BasketService,
+    private store: Store<IState>
   ) {
     const startMode = !environment.production ? ' DEV' : '';
     this.titleService.setTitle(this.title + startMode);
@@ -34,16 +38,19 @@ export class AppComponent implements OnInit {
   }
 
   public getUser$(): Observable<IUser> {
-    return timer(2000).pipe(
-      map(() => ({
-        name: 'Chosen One',
-        role: 'Guest',
-        shopSum: {
-          value: 1000,
-          defaultCurrency: 'RUR',
-        },
-      }))
+    return this.store.pipe(
+      select(userFeatureSelector)
     );
+    // return timer(2000).pipe(
+    //   map(() => ({
+    //     name: 'Chosen One',
+    //     role: 'Guest',
+    //     shopSum: {
+    //       value: 0,
+    //       defaultCurrency: 'RUR',
+    //     },
+    //   }))
+    // );
   }
 
   onBasketClicked() {
