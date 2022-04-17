@@ -75,15 +75,15 @@ export class DataViewComponent implements OnInit {
     }
   }
 
-  onAddToCart(event: any, product: IProduct) {
+  onAddToCart(event: any, selectedProduct: IProduct) {
     event.stopPropagation();
     this.basketService.addProductToBasket(
-      this.products.find((product) => product.id === product.id)!
+      this.products.find((product) => product.id === selectedProduct.id)!
     );
     this.store.dispatch(
       addShopSum(
         CurrencyPipe.calculateSum(
-          product.price!,
+          selectedProduct.price!,
           this.storeCurrency,
           this.userCurrency
         )
