@@ -9,12 +9,14 @@ import {
 import { Observable, tap } from 'rxjs';
 import { IAddressState } from '../../../store/state/address.state';
 import { addressFeatureSelector } from '../../../store/reducers/address.reducer';
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [MessageService],
 })
 export class AddressComponent {
   address$: Observable<IAddressState> = this.store.pipe(
@@ -33,10 +35,15 @@ export class AddressComponent {
     }),
   });
 
-  constructor(private formBuilder: FormBuilder, private store: Store<IState>) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store<IState>,
+    private messageService: MessageService,
+  ) {}
 
   onPush() {
     this.store.dispatch(addAddress(this.addressForm.getRawValue()));
+    this.messageService.add({severity:'success', summary: 'Заказ оформлен', detail: 'Ожидайте доставку по указанному адресу.'});
   }
 
   onReset() {
