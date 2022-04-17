@@ -8,7 +8,7 @@ import { IProduct } from '../../../models/product-info.model';
 import { ProductService } from '../../../services/product.service';
 import { select, Store } from '@ngrx/store';
 import { IState } from '../../../store/reducers';
-import { getProducts } from '../../../store/reducers/products.reducer';
+import { getCategories, getProducts } from '../../../store/reducers/products.reducer';
 import { loadProducts } from '../../../store/actions/products.actions';
 
 @Component({
@@ -25,7 +25,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private changeDetectorRef: ChangeDetectorRef,
-    private store: Store<IState>
+    private store: Store<IState>,
   ) {}
 
   ngOnInit(): void {
@@ -34,16 +34,11 @@ export class ProductListComponent implements OnInit {
       this.products = data;
       this.productsFullList = data;
     });
-    this.store.dispatch(loadProducts());
-    // this.productService.getProducts().subscribe((data) => {
-    //   this.changeDetectorRef.markForCheck();
-    //   this.products = data;
-    //   this.productsFullList = data;
-    // });
-    this.productService.getCategories().subscribe((categories) => {
+    this.store.pipe(select(getCategories)).subscribe((categories) => {
       this.changeDetectorRef.markForCheck();
       this.categories = categories;
     });
+    this.store.dispatch(loadProducts());
   }
 
   onSelectedCategory(selectedCategory: string) {

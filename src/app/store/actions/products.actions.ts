@@ -7,6 +7,7 @@ enum ProductsActionTypes {
   UpdateProductsCount = '[Products] Update products count',
   AddToBasket = '[Products] Add to basket',
   LoadProducts = '[Products] Load products',
+  SetCategories =  '[Products] Get categories list',
 }
 
 export const setProducts = createAction(
@@ -25,3 +26,7 @@ export const addToBasket = createAction(
 );
 
 export const loadProducts = createAction(ProductsActionTypes.LoadProducts);
+
+export const setCategories = createAction(ProductsActionTypes.SetCategories,
+  (categories: string[]) => ({categories})
+);

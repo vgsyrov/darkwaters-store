@@ -8,7 +8,7 @@ import {
   resetProducts,
   setProducts,
   updateProductsCount,
-  addToBasket,
+  addToBasket, setCategories,
 } from '../actions/products.actions';
 import {
   IProductsState,
@@ -40,7 +40,11 @@ export const productsReducer = createReducer<IProductsState>(
   on(addToBasket, (state, { id }) => ({
     ...state,
     basketIds: [...state.basketIds, id],
-  }))
+  })),
+  on(setCategories, (state, { categories}) => ({
+    ...state,
+    categories: categories
+  }) )
 );
 
 export const productsFeatureSelector =
@@ -60,4 +64,9 @@ export const {
 export const getProduct = createSelector(
   getProductsEntities,
   (products: Dictionary<IProduct>, id: string) => products[id]
+);
+
+export const getCategories = createSelector(
+  productsFeatureSelector,
+  (productsState: IProductsState) => productsState.categories
 );
