@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {concat, flatMap, switchMap} from 'rxjs';
+import { concat, flatMap, switchMap } from 'rxjs';
 import { ProductService } from '../../services/product.service';
-import {loadProducts, setCategories, setProducts} from '../actions/products.actions';
+import {
+  loadProducts,
+  setCategories,
+  setProducts,
+} from '../actions/products.actions';
 
 @Injectable()
 export class ProductsEffects {

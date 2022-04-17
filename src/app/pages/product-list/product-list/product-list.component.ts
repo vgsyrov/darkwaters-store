@@ -8,7 +8,10 @@ import { IProduct } from '../../../models/product-info.model';
 import { ProductService } from '../../../services/product.service';
 import { select, Store } from '@ngrx/store';
 import { IState } from '../../../store/reducers';
-import { getCategories, getProducts } from '../../../store/reducers/products.reducer';
+import {
+  getCategories,
+  getProducts,
+} from '../../../store/reducers/products.reducer';
 import { loadProducts } from '../../../store/actions/products.actions';
 
 @Component({
@@ -25,7 +28,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private changeDetectorRef: ChangeDetectorRef,
-    private store: Store<IState>,
+    private store: Store<IState>
   ) {}
 
   ngOnInit(): void {
