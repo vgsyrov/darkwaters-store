@@ -26,7 +26,7 @@ export class ProductCardFullComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private basketService: BasketService,
     private store: Store<IState>
-  ) { }
+  ) {}
 
   public product: IProduct | null = null;
 
