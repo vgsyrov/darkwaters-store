@@ -26,20 +26,28 @@ export class ProductCardFullComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private basketService: BasketService,
     private store: Store<IState>
-  ) {}
+  ) {
+    console.log('PRODUCT FETCHING++++');
+  }
 
   public product: IProduct | null = null;
 
   ngOnInit(): void {
-    const productId: string = this.activatedRoute.snapshot.paramMap.get(
-      'id'
-    ) as string;
-    this.store.pipe(select(getProduct, productId)).subscribe((product) => {
-      if (product) {
-        this.product = product;
-        this.changeDetectorRef.markForCheck();
-      }
+    console.log('PRODUCT FETCHING!!!!');
+    this.activatedRoute.data.subscribe((response: any) => {
+      console.log('PRODUCT FETCHING', response);
+      this.product = response.product;
+      console.log('PRODUCT FETCHED');
     });
+    // const productId: string = this.activatedRoute.snapshot.paramMap.get(
+    //   'id'
+    // ) as string;
+    // this.store.pipe(select(getProduct, productId)).subscribe((product) => {
+    //   if (product) {
+    //     this.product = product;
+    //     this.changeDetectorRef.markForCheck();
+    //   }
+    // });
   }
 
   onAddToBasket() {

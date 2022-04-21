@@ -9,6 +9,9 @@ import { setProducts } from '../store/actions/products.actions';
 @Injectable({
   providedIn: 'root',
 })
+/*
+Deprecated
+*/
 export class ProductsStoreService {
   private _products$ = new BehaviorSubject<IProduct[]>([]);
   private getProductsSubscription: Subscription | undefined;

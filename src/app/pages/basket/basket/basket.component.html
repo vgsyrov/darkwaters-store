@@ -5,9 +5,9 @@
 <!--    header="Корзина"-->
 <!--    filterBy="name"-->
 <!--    filterPlaceholder="Фильтр по имени"-->
-<!--    [dragdrop]="true"-->
+<!--    [dragdrop]="false"-->
 <!--  >-->
-<!--    <ng-template let-product pTemplate="item">-->
+<!--    <ng-template let-product pTemplate="item" tabindex="index">-->
 <!--      <div class="product-item">-->
 <!--        <div class="image-container">-->
 <!--          <img-->
@@ -28,7 +28,7 @@
 <!--              'product-badge status-' + product.inventoryStatus.toLowerCase()-->
 <!--            "-->
 <!--          >{{ product.inventoryStatus }}</span>-->
-<!--          <app-quantity-input [formControlName]="index"> </app-quantity-input>-->
+<!--&lt;!&ndash;          <app-quantity-input [formControlName]="product.count"> </app-quantity-input>&ndash;&gt;-->
 <!--        </div>-->
 <!--      </div>-->
 <!--    </ng-template>-->
@@ -39,9 +39,29 @@
   <p-listbox formArrayName="counters">
     <div *ngFor="let product of basket$ | async; index as index">
       <div *ngIf="product && product.image">
-        <img [src]="'assets/data/images/product/' + product.image[0]" />
+        <div class="image-container">
+          <img
+            [src]="'assets/data/images/product/' + product.image[0]"
+            [alt]="product.name"
+            class="product-image"
+          />
+        </div>
+        <div class="product-list-detail">
+          <h5 class="mb-2">{{ product.name }}</h5>
+          <i class="pi pi-tag product-category-icon"></i>
+          <span class="product-category">{{ product.category }}</span>
+        </div>
         <div>{{ product.name }}</div>
         <app-quantity-input [formControlName]="index"> </app-quantity-input>
+        <div class="product-list-action">
+          <h6 class="mb-2">${{ product.price }}</h6>
+          <span
+            [class]="
+              'product-badge status-' + product.inventoryStatus!.toLowerCase()
+            "
+            >{{ product.inventoryStatus }}</span
+          >
+        </div>
       </div>
     </div>
   </p-listbox>
