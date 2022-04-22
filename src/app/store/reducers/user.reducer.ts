@@ -4,6 +4,7 @@ import {
   addShopSum,
   reduceShopSum,
   resetShopSum,
+  setShopSum,
 } from '../actions/user.actions';
 
 export const USER_FEATURE = 'user';
@@ -24,7 +25,14 @@ export const userReducer = createReducer<IUserState>(
       value: state.shopSum.value + reducedSum,
     },
   })),
-  on(resetShopSum, () => userInitialState)
+  on(resetShopSum, () => userInitialState),
+  on(setShopSum, (state, { shopSum }) => ({
+    ...state,
+    shopSum: {
+      ...state.shopSum,
+      value: shopSum,
+    },
+  }))
 );
 
 export const userFeatureSelector =
